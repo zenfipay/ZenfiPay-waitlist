@@ -29,7 +29,8 @@ export default Font
 const colors = {
   brand: {
     900: "#10BD87",
-    400: "#10BD87"
+    400: "#10BD87",
+    100: "#BFECDE"
   
   },
   primary: {

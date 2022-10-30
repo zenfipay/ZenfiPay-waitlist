@@ -6,11 +6,10 @@
   }
 
 body {
-  margin: 0;
   font-family: 'Nexa Normal';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: '#0FDBA8';
+  background-color: 'white';
   margin: 0;
   padding: 0;
   height: '100%'
