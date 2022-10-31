@@ -2,15 +2,14 @@
 import React from 'react'
 import {Heading} from '@chakra-ui/react'
 
-const Heading2 = ({children, fontSize='18px',  ...otherProps}) => {
+const Heading2 = ({children, fontSize= ['20px','22px','24px','28px','28px'],  ...otherProps}) => {
 
 
     return (
-        <Heading fontSize={ ['20px','22px','24px','28px','28px']}
-         fontWeight={700} fontFamily={'Dm sans'}
-          color='black'
-          lineHeight={'100%'}
-           textTransform='capitalize' {...otherProps}>{children}</Heading>
+        <Heading fontSize={fontSize}
+        color="brand.400" fontWeight={700} fontFamily='Nexa Normal' letterSpacing={-4}
+        lineHeight={1.2}
+        py={4} {...otherProps}>{children}</Heading>
 
 
     )

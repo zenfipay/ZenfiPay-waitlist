@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-import { ChakraProvider , extendTheme} from "@chakra-ui/react"
+import { ChakraProvider , CSSReset, extendTheme} from "@chakra-ui/react"
 import { Global } from '@emotion/react';
 
 
@@ -64,8 +64,13 @@ const theme = extendTheme({ colors
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+
   <ChakraProvider theme={theme}>
+    <CSSReset/>
   <Font/>
   <App />
-</ChakraProvider>,
+</ChakraProvider>
+</React.StrictMode>
+,
 )
