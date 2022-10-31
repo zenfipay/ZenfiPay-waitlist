@@ -22,7 +22,9 @@ import payment from "./assets/payment.svg";
 import request from "./assets/request.svg";
 import exchange from "./assets/exchange.svg";
 import FeatureCard from "./component/featureCard";
-import choose from './assets/choose.png'
+import choose from "./assets/choose.png";
+import FeatureText from "./component/featureText";
+import bgLines from "./assets/bg-lines.png"
 function App() {
   const [count, setCount] = useState(0);
 
@@ -147,7 +149,8 @@ function App() {
             </Flex>
           </Container>
         </Flex>
-        <Flex w="100%" px={helper.px} bg="white">
+        <Flex w="100%" flexDir={"column"} px={helper.px} bg="white">
+          <Flex w="full">
           <Container>
             <Flex
               flex="1"
@@ -170,25 +173,77 @@ function App() {
                   fontSize={["32px", "42px", "55px", "64px"]}
                   px={["10px", "40px", "40px", "80px", "210px"]}
                 >
-Why choose us?                </Heading1>
+                  Why choose us?{" "}
+                </Heading1>
 
                 <Flex
                   mt={["40px", "80px", "80px", "120px"]}
                   w="100%"
                   flexWrap={"wrap"}
-                  bg="red"
+                  // bg="red
                   justify={"space-between"}
+                  alignItems={"center"}
                 >
-                 <Image src={choose} borderRadius={[42]} w={['50%']}    />
-                 <Flex   flexDir={"column"} w={['40%']} bg="yellow">
-                  <Heading3>Low Cost</Heading3>
-                  <PrimaryText>A built in system with the lowest possible 
-cost that energizes customer to grab it.</PrimaryText>
-                 </Flex>
+                  <Flex
+                    w={["100%", "100%", "100%", "50%", "50%"]}
+                    mb={["50px"]}
+                  >
+                    <Image src={choose} borderRadius={[42]} w={"100%"} />
+                  </Flex>
+                  <Flex
+                    flexDir={"column"}
+                    w={["100%", "100%", "100%", "40%", "40%"]}
+                    justify={"center"}
+                  >
+                    <FeatureText
+                      title={"Low Cost"}
+                      subtitle={
+                        "A built in system with the lowest possible cost that energizes customer to grab it."
+                      }
+                    />
+                    <FeatureText
+                      title={"Easy Process"}
+                      subtitle={
+                        "Easily processable and maintainable system that allows you to process and track records."
+                      }
+                    />
+                    <FeatureText
+                      title={"Quick Payments"}
+                      subtitle={
+                        "Make payment from one part of the world to another in just a few seconds."
+                      }
+                    />
+                    <FeatureText
+                      title={"Secure and Safe"}
+                      mb={"30px"}
+                      subtitle={
+                        "Customer's data security is the first priority. Make your transactions securely."
+                      }
+                    />
+                  </Flex>
                 </Flex>
               </Flex>
             </Flex>
           </Container>
+          </Flex>
+          <Flex w="full" py={helper.sessionPy}>
+            <Container>
+              <Flex bg={color.dark} p={["59px"]} bgImage={bgLines} borderRadius={"30px"} textTransform={"revert"}   justify={"center"} alignItems={"center"} flexDir={"column"} flex={1}>
+                
+                        <Flex flexDir={"column"} justify="center" align={"center"} >
+                        <Heading3 color={'white'} textAlign="center" lineHeight={"44px"} textTransform={"revert"} fontSize={["36px"]}>Be among the first <br/>
+to get a Zenfipay account!</Heading3>
+                        <Flex flexDir={"column"} mt={"54px"} align="center" w="50%" justify={"center"} >
+
+                      <Button  color="#1E1E1E" py={'26px'} px={'22px'} fontSize={['16px']} 
+            fontFamily='Nexa Normal'
+                 bg={'brand.900'}
+  >Get early access</Button>
+                        </Flex>
+                        </Flex>
+                </Flex>
+            </Container>
+          </Flex>
         </Flex>
       </Box>
     </>
