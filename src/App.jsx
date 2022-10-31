@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Flex, Heading, Text, Box } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Link } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { color } from "./utils/color";
 import landingPhone from "./assets/landing-phone.svg";
@@ -232,14 +232,14 @@ function App() {
           </Flex>
           <Flex w="full" py={helper.sessionPy}>
             <Container>
-              <Flex bg={color.dark} p={["59px"]} bgImage={bgLines} borderRadius={"30px"} textTransform={"revert"}   justify={"center"} alignItems={"center"} flexDir={"column"} flex={1}>
+              <Flex bg={color.dark} p={["31px","41px","49px","59px"]} bgImage={bgLines} borderRadius={"30px"} textTransform={"revert"}   justify={"center"} alignItems={"center"} flexDir={"column"} flex={1}>
                 
                         <Flex flexDir={"column"} justify="center" align={"center"} >
-                        <Heading3 color={'white'} textAlign="center" lineHeight={"44px"} textTransform={"revert"} fontSize={["36px"]}>Be among the first <br/>
+                        <Heading3 color={'white'} textAlign="center" lineHeight={"120%"} textTransform={"revert"} fontSize={["36px"]}>Be among the first <br/>
 to get a Zenfipay account!</Heading3>
-                        <Flex flexDir={"column"} mt={"54px"} align="center" w="50%" justify={"center"} >
+                        <Flex flexDir={"column"} mt={["20px","34px","44px","54px"]} align="center" w={["50%","50%","60%","50%","45%"]} justify={"center"} >
 
-                      <Button  color="#1E1E1E" py={'26px'} px={'22px'} fontSize={['16px']} 
+                      <Button  color="white" py={['10px','10px','22px','22px']} px={'22px'} fontSize={['10px','10px','16px','16px','16px']} 
             fontFamily='Nexa Normal'
                  bg={'brand.900'}
   >Get early access</Button>
@@ -249,21 +249,33 @@ to get a Zenfipay account!</Heading3>
             </Container>
           </Flex>
         </Flex>
-        <Flex bg="white" pt="83px" pb="70px">
+        <Flex bg="white" pt={["23px","43px","43px","83px"]} pb={["50px","60px","65px","70px"]}>
           <Container>
              <Flex justify={"center"}>
-                <Image src={twitter}  px={"8px"}/>
-                <Image src={facebook} px={"8px"}/>
-                <Image src={instagram} px={"8px"}/>
-                <Image src={linkedin} px={"8px"}/>
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+
+                <Image src={twitter} />
+               </Link>
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+
+               <Image src={facebook}/>
+               </Link>
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+
+               <Image src={instagram}/>
+               </Link>
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+
+               <Image src={linkedin}/>
+               </Link>
              </Flex>
 
           </Container>
         </Flex>
-        <Flex  w="95%" mx="auto" bg="white" pt="39px" pb="29px" borderTop={"0.5px solid #1E1E1E"} >
+        <Flex  w="95%" mx="auto" bg="white" pt={["20px","30px","35px","39px"]} pb="29px" borderTop={"0.5px solid #1E1E1E"} >
           <Container>
              <Flex justify={"center"}>
-                        <PrimaryText textAlign="center" >© Copyright 2022, All Rights Reserved by Zenfipay</PrimaryText>
+                        <PrimaryText fontSize={["12px","13px","13px","14px"]} px={0} textAlign="center" >© Copyright 2022, All Rights Reserved by Zenfipay</PrimaryText>
              </Flex>
 
           </Container>
