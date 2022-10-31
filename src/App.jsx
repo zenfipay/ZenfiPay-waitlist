@@ -22,15 +22,19 @@ import payment from "./assets/payment.svg";
 import request from "./assets/request.svg";
 import exchange from "./assets/exchange.svg";
 import FeatureCard from "./component/featureCard";
-import choose from "./assets/choose.png";
+import choose from "./assets/choose.svg";
 import FeatureText from "./component/featureText";
 import bgLines from "./assets/bg-lines.png"
+import bgChoose from "./assets/choose-bg.svg"
+import facebook from "./assets/facebook.svg"
+import twitter from "./assets/twitter.svg"
+import linkedin from "./assets/linkedin.svg"
+import instagram from "./assets/instagram.svg"
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <Box flex={"column"} w="full">
+      <Box bg="white" flex={"column"} w="full">
         <Flex
           bg={color.dark}
           backgroundImage={crystal}
@@ -149,7 +153,7 @@ function App() {
             </Flex>
           </Container>
         </Flex>
-        <Flex w="100%" flexDir={"column"} px={helper.px} bg="white">
+        <Flex w="100%" flexDir={"column"} px={helper.px} bg="white" bgImage={bgChoose} >
           <Flex w="full">
           <Container>
             <Flex
@@ -244,6 +248,25 @@ to get a Zenfipay account!</Heading3>
                 </Flex>
             </Container>
           </Flex>
+        </Flex>
+        <Flex bg="white" pt="83px" pb="70px">
+          <Container>
+             <Flex justify={"center"}>
+                <Image src={twitter}  px={"8px"}/>
+                <Image src={facebook} px={"8px"}/>
+                <Image src={instagram} px={"8px"}/>
+                <Image src={linkedin} px={"8px"}/>
+             </Flex>
+
+          </Container>
+        </Flex>
+        <Flex  w="95%" mx="auto" bg="white" pt="39px" pb="29px" borderTop={"0.5px solid #1E1E1E"} >
+          <Container>
+             <Flex justify={"center"}>
+                        <PrimaryText textAlign="center" >© Copyright 2022, All Rights Reserved by Zenfipay</PrimaryText>
+             </Flex>
+
+          </Container>
         </Flex>
       </Box>
     </>
