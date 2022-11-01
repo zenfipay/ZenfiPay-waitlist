@@ -76,6 +76,7 @@ function App() {
                     flex="1"
                     mt={["30px", "64px", "64px", "64px"]}
                     flexDir={"column"}
+                    id="sendIt"
                   >
                     <FormInput
                       placeholder={"Enter your email address"}
@@ -241,6 +242,8 @@ to get a Zenfipay account!</Heading3>
 
                       <Button  color="white" py={['10px','10px','22px','22px']} px={'22px'} fontSize={['10px','10px','16px','16px','16px']} 
             fontFamily='Nexa Normal'
+            as={Link}
+            href={"#sendIt"}
                  bg={'brand.900'}
   >Get early access</Button>
                         </Flex>
@@ -252,19 +255,19 @@ to get a Zenfipay account!</Heading3>
         <Flex bg="white" pt={["23px","43px","43px","83px"]} pb={["50px","60px","65px","70px"]}>
           <Container>
              <Flex justify={"center"}>
-               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="https://twitter.com/ZenfiPay" isExternal >
 
                 <Image src={twitter} />
                </Link>
-               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="https://web.facebook.com/zenfipay" isExternal >
 
                <Image src={facebook}/>
                </Link>
-               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="https://www.instagram.com/ZenfiPay/" isExternal >
 
                <Image src={instagram}/>
                </Link>
-               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="" isExternal >
+               <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="https://www.linkedin.com/company/zenfipay/" isExternal >
 
                <Image src={linkedin}/>
                </Link>

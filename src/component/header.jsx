@@ -7,7 +7,8 @@ import {
   Text,
   Button,
   Image,
-  useDisclosure
+  useDisclosure,
+  Link
 } from "@chakra-ui/react";
 import Container from "./container";
 import zenfipaylogo from '../assets/zenfipay-logo.svg'
@@ -63,6 +64,8 @@ const Header = (props) => {
             display={['none','flex','flex','flex']}
             fontFamily='Nexa Normal'
                  bg={'brand.100'}
+                 as={Link}
+                 href={"#sendIt"}
   >Get early access</Button>
  
         </Flex>
