@@ -1,7 +1,7 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import  axios from 'axios'
 import "./App.css";
-import { Flex, Heading, Text, Box, Link } from "@chakra-ui/react";
+import { Flex, Heading, Text, Box, Link, Spinner } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { color } from "./utils/color";
 import landingPhone from "./assets/landing-phone.svg";
@@ -30,7 +30,31 @@ import facebook from "./assets/facebook.svg"
 import twitter from "./assets/twitter.svg"
 import linkedin from "./assets/linkedin.svg"
 import instagram from "./assets/instagram.svg"
+import snap from "./assets/snap.svg"
+
 function App() {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = () => {
+    console.log(email)
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      setSubmitted(true)
+
+    }, 3000)
+    setTimeout(() => {
+setSubmitted(false)
+    }, 6000)
+    // axios.post('http://127.0.0.1:3000/sendemail', {email}).then(e => {
+    //   console.log(e)
+    // }).catch(e => {
+    //   console.log(e)
+    // })
+    
+  }
 
   return (
     <>
@@ -60,6 +84,7 @@ function App() {
                   "space-between",
                   "space-between",
                 ]}
+                align={"flex-end"}
                 flexWrap={"wrap"}
               >
                 <Flex
@@ -72,29 +97,78 @@ function App() {
                   <PrimaryHeading color="white" pr="10%">
                     A simple and highly secure money transfer around the world.
                   </PrimaryHeading>
-                  <Flex
-                    flex="1"
+                { submitted ? 
+                <Flex flex={1} py={["30px", "64px", "64px", "64px"]}>
+<Flex
+                    flexDir={"column"}
+                    id="sendIt"
+                    px={["30px"]}
+                    py={["20px"]}
+                    bg={'brand.100'}
+                    borderRadius={"10px"}
+                    pos={"relative"}
+                    justify={"center"}
+                    align="center"
+
+                  >
+                    <Image src={snap} pos={"absolute"} top={"-24px"} right={"-30px"}/>
+                      <Text 
+             fontWeight={500}
+            textTransform='capitalize'
+            fontSize={['12px','16px','18px','24px']}
+            letterSpacing={'-2%'}
+            fontFamily={'Poppins'}
+            color={'#1E1E1E'}>
+              You have successfully joined Zenfipay waitlist 
+and you will be informed when we launch. <br/>
+<b>Share the word!</b><br/><br/>
+
+
+Join our <Link href="#social" color={"#14A6AF"} textDecoration={"underline"}  fontStyle={"italic"}>social media</Link>  platforms <br/>
+to stay updated.
+
+                      </Text>
+                    
+                      
+                  </Flex>
+
+                </Flex>
+                 : 
+                 
+                 <Flex flex={1} pb={["75px", "100px", "150px", "182px"]}>
+                 <Flex
+                  flex={1}
                     mt={["30px", "64px", "64px", "64px"]}
                     flexDir={"column"}
                     id="sendIt"
+                    
                   >
                     <FormInput
                       placeholder={"Enter your email address"}
                       my={["12px", "19px", "27px", "35px"]}
+                      textTransform={"lowercase"}
+                      value={email}
+                      onChange={(e) =>  setEmail(e.target.value)}
                     />
-                    <Button bg="primary.400">
-                      Join waitlist
-                      <Image
+                    <Button bg="primary.400" onClick= {() => handleSubmit()}>
+                     { loading ? <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='black.500'
+  size='sm'
+/>: <>Join waitlist <Image
                         pl={"6px"}
                         src={arrowRight}
                         height={["10px", "15px", "15px", "20px"]}
-                      />
+                      /></>}
+                      
                     </Button>
-                  </Flex>
+                  </Flex> </Flex>}
                 </Flex>
                 <Image
                   src={landingPhone}
-                  mt={["50px", "100px", "100px", "20px"]}
+                  // mt={["50px", "100px", "100px", "20px"]}
                   height={["371px", "100%", "100%", "100%"]}
                 />
               </Flex>
@@ -245,6 +319,9 @@ to get a Zenfipay account!</Heading3>
             as={Link}
             href={"#sendIt"}
                  bg={'brand.900'}
+                 _hover={{
+                  bg: "#167758"
+               }}
   >Get early access</Button>
                         </Flex>
                         </Flex>
@@ -252,7 +329,7 @@ to get a Zenfipay account!</Heading3>
             </Container>
           </Flex>
         </Flex>
-        <Flex bg="white" pt={["23px","43px","43px","83px"]} pb={["50px","60px","65px","70px"]}>
+        <Flex id="social" bg="white" pt={["23px","43px","43px","83px"]} pb={["50px","60px","65px","70px"]}>
           <Container>
              <Flex justify={"center"}>
                <Link mx={"8px"}  w={["30px","35px","35px","40px"]} href="https://twitter.com/ZenfiPay" isExternal >

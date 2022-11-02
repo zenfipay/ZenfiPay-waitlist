@@ -64,6 +64,10 @@ const Header = (props) => {
             display={['none','flex','flex','flex']}
             fontFamily='Nexa Normal'
                  bg={'brand.100'}
+                 _hover={{
+                    bg: "#7B9E93"
+                 }}
+             
                  as={Link}
                  href={"#sendIt"}
   >Get early access</Button>
