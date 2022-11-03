@@ -17,12 +17,13 @@ const FormInput = ({children,  color='rgba(255, 255, 255, 0.5)', my, error, plac
             color={color}
             opacity={0.5}
             fontWeight={500}
-            textTransform='capitalize'
             fontSize={fontSize}
             _focus={{
                 color: "white",
                 border: error ? "1px solid red" : "1px solid white",
-                opacity: 1
+                opacity: 1,
+                // textTransform: "lowercase"
+
             }}
             _active={{
                 color: "white",
@@ -30,7 +31,10 @@ const FormInput = ({children,  color='rgba(255, 255, 255, 0.5)', my, error, plac
 
             _placeholderShown={{
                 color: "white",
+
             }}
+
+            textTransform={"revert"}
 
             shadow={"0px"}
             outline={"0px"}

@@ -1,8 +1,18 @@
 import { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import { Flex, Heading, Text, Box, Link, Spinner,Image, Icon } from "@chakra-ui/react";
-import {BiErrorCircle} from "react-icons/bi"
+import {
+  Flex,
+  chakra,
+  Text,
+  Box,
+  Link,
+  Spinner,
+  Image,
+  Icon,
+  shouldForwardProp,
+} from "@chakra-ui/react";
+import { BiErrorCircle } from "react-icons/bi";
 import { color } from "./utils/color";
 import landingPhone from "./assets/landing-phone.svg";
 import Header from "./component/header";
@@ -31,36 +41,50 @@ import twitter from "./assets/twitter.svg";
 import linkedin from "./assets/linkedin.svg";
 import instagram from "./assets/instagram.svg";
 import snap from "./assets/snap.svg";
-import errorImage from "./assets/error-email.svg"
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import {RiCloseFill} from 'react-icons/ri'
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
 });
 
+import { motion, isValidMotionProp } from "framer-motion";
+
+const ChakraFlex = chakra(motion.flex, {
+  /**
+   * Allow motion props and non-Chakra props to be forwarded.
+   */
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+const ChakraImage = chakra(motion.box, {
+  /**
+   * Allow motion props and non-Chakra props to be forwarded.
+   */
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+
 function App() {
-  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (values, { setSubmitting }) => {
+    setLoading(true);
     axios
-      .post("https://waitlistapi.zenfipay.com/subscribe", {email: values.email })
+      .post("https://waitlistapi.zenfipay.com/subscribe", {
+        email: values.email,
+      })
       .then((e) => {
-        setLoading(true);
-        setTimeout(() => {
           setLoading(false);
           setSubmitted(true);
-        }, 3000);
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 6000);
       })
       .catch((e) => {
         console.log(e);
       });
-      setSubmitting(false)
+    setSubmitting(false);
   };
 
   return (
@@ -75,6 +99,7 @@ function App() {
           pos={"relative"}
           flexDir={"column"}
           justify={"space-between"}
+          overflow={"hidden"}
         >
           <Flex px={helper.px}>
             <Header />
@@ -94,7 +119,16 @@ function App() {
                 align={"flex-end"}
                 flexWrap={"wrap"}
               >
-                <Flex
+                <ChakraFlex
+                  animate={{
+                    x: ["-100%", "0%"],
+                    opacity: [0, 0.5, 1],
+                  }}
+                  // @ts-ignore no problem in operation, although type error appears.
+                  transition={{
+                    duration: 1,
+                    ease: "easeInOut",
+                  }}
                   flexDir={"column"}
                   w={["100%", "100%", "100%", "45%", "45%"]}
                 >
@@ -110,12 +144,14 @@ function App() {
                         flexDir={"column"}
                         id="sendIt"
                         px={["30px"]}
-                        py={["20px"]}
+                        pt={["45px"]}
+                        pb={["20px"]}
                         bg={"brand.100"}
                         borderRadius={"10px"}
                         pos={"relative"}
                         justify={"center"}
                         align="center"
+
                       >
                         <Image
                           src={snap}
@@ -123,6 +159,39 @@ function App() {
                           top={"-24px"}
                           right={"-30px"}
                         />
+                        <Flex  width={"100%"} justify={"center"} 
+                            >
+                        
+                        <Flex    pos={"absolute"}
+                         top={"-25px"}
+                        //  right={"50%"}
+                        onClick={() => setSubmitted(false)}
+                         W={"50px"}
+                         h={"50px"}
+                         boxShadow={"0px 0px 17px 2px rgba(16, 189, 135, 0.5)"}
+                         bg={"#222121"}
+                         _hover={{
+                          bg: "#433F3F"
+                         }}
+                         _active={{
+                          bg: "#1F1D1D"
+
+                         }}
+                         borderRadius={"50%"}
+                         padding={"15px"}
+                         justify={"center"}
+                         align={"center"}
+                         
+                         >
+
+                        <Icon 
+                      
+                        as={RiCloseFill} 
+                        color={"white"}
+                          
+                           w={"100%"} h={"100%"} /> 
+                        </Flex>
+                        </Flex>
                         <Text
                           fontWeight={500}
                           textTransform="capitalize"
@@ -152,26 +221,28 @@ function App() {
                     </Flex>
                   ) : (
                     <Formik
-                    initialValues={{ email: "" }}
-                    onSubmit={handleSubmit}
-                    validationSchema={validationSchema}
-                  >
-                    {({
-                      handleChange,
-                      setFieldTouched,
-                      values,
-                      errors,
-                      isSubmitting,
-                      handleSubmit,
-                      handleReset,
-                      touched,
-                    }) => (
-                      <form onSubmit={handleSubmit}>
-                    <Flex flex={1} pb={["75px", "100px", "150px", "182px"]}>
-        
+                      initialValues={{ email: "" }}
+                      onSubmit={handleSubmit}
+                      validationSchema={validationSchema}
+                    >
+                      {({
+                        handleChange,
+                        setFieldTouched,
+                        values,
+                        errors,
+                        isSubmitting,
+                        handleSubmit,
+                        handleReset,
+                        touched,
+                      }) => (
+                        <form onSubmit={handleSubmit}>
+                          <Flex
+                            flex={1}
+                            pb={["75px", "100px", "150px", "182px"]}
+                          >
                             <Flex
                               flex={1}
-                              css={{width: "100%"}}
+                              css={{ width: "100%" }}
                               mt={["30px", "64px", "64px", "64px"]}
                               flexDir={"column"}
                               id="sendIt"
@@ -179,20 +250,28 @@ function App() {
                               <FormInput
                                 placeholder={"Enter your email address"}
                                 my={["12px", "19px", "27px", "35px"]}
-                                textTransform={"lowercase"}
                                 onChange={handleChange}
                                 type="email"
                                 name="email"
-                                error={touched.email && (
-                                  <Flex color="red.400" align="center">
-                                    {errors.email && <Icon as={BiErrorCircle}/>}
-                                  <Text px={".2rem"} py=".2rem" align={"center"} >
-                                    {errors.email}
-                                  </Text>
-                                  </Flex>
-                                )}
                                 onBlur={() => setFieldTouched("email")}
-                                values={values.email}
+                                error={
+                                  touched.email && (
+                                    <Flex color="red.400" align="center">
+                                      {errors.email && (
+                                        <Icon as={BiErrorCircle} />
+                                      )}
+                                      <Text
+                                        px={".2rem"}
+                                        py=".2rem"
+                                        align={"center"}
+                                      >
+                                        {errors.email}
+                                      </Text>
+                                    </Flex>
+                                  )
+                                }
+                                value={values.email.toLowerCase()}
+                                values={values.email.toLowerCase()}
                               />
 
                               <Button bg="primary.400" type="submit">
@@ -216,18 +295,32 @@ function App() {
                                 )}
                               </Button>
                             </Flex>
-                 
-                    </Flex>
-                    </form>
-                        )}
-                      </Formik>
+                          </Flex>
+                        </form>
+                      )}
+                    </Formik>
                   )}
-                </Flex>
-                <Image
-                  src={landingPhone}
-                  // mt={["50px", "100px", "100px", "20px"]}
-                  height={["371px", "100%", "100%", "100%"]}
-                />
+                </ChakraFlex>
+
+                <ChakraImage
+                  animate={
+                    {
+                     y: ["100%", "0%"],
+                      opacity: [0, 0.5, 1]
+                    }
+                  }
+                  transition={{
+                    duration: 1,
+                    ease: "easeInOut",
+
+                  }}
+                >
+                  <Image
+                    src={landingPhone}
+                    // mt={["50px", "100px", "100px", "20px"]}
+                    height={["371px", "100%", "100%", "100%"]}
+                  />
+                </ChakraImage>
               </Flex>
             </Container>
           </Flex>
