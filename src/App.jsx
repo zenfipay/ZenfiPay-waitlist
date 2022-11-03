@@ -46,7 +46,7 @@ function App() {
 
   const handleSubmit = (values, { setSubmitting }) => {
     axios
-      .post("http://waitlistapi.zenfipay.com/subscribe", {email: values.email })
+      .post("https://waitlistapi.zenfipay.com/subscribe", {email: values.email })
       .then((e) => {
         setLoading(true);
         setTimeout(() => {
