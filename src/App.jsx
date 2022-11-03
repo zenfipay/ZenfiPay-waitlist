@@ -185,7 +185,7 @@ function App() {
                                 name="email"
                                 error={touched.email && (
                                   <Flex color="red.400" align="center">
-                                    <Icon as={BiErrorCircle}/>
+                                    {errors.email && <Icon as={BiErrorCircle}/>}
                                   <Text px={".2rem"} py=".2rem" align={"center"} >
                                     {errors.email}
                                   </Text>
